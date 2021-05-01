@@ -1,10 +1,21 @@
 import React from 'react';
 
+import NavTab from '../NavTab/NavTab';
+import Promo from '../Promo/Promo';
+import AboutProject from '../AboutProject/AboutProject';
+import Techs from '../Techs/Techs';
+import AboutMe from '../AboutMe/AboutMe';
+import Portfolio from '../Portfolio/Portfolio';
 
 function Main() {
     return (
         <main className='main'>
-            <h1 className='main__title'>Учебный проект студента факультета Веб-разработки.</h1>
+            <Promo />
+            <NavTab />
+            <AboutProject />
+            <Techs />
+            <AboutMe />
+            <Portfolio />
         </main>
     );
 }

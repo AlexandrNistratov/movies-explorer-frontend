@@ -1,0 +1,116 @@
+.aboutProject {
+    display: flex;
+    flex-direction: column;
+    background: #202020;
+    max-height: 608px;
+    color: #FFFFFF;
+    align-items: center;
+    padding-bottom: 110px;
+}
+
+.aboutProject__title {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: -0.04em;
+    max-width: 600px;
+    margin: 110px auto 23px 70px;
+}
+
+.aboutProject__list {
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid #DADADA;
+    max-width: 1140px;
+    margin: 0 auto 110px;
+    list-style-type: none;
+    padding: 0;
+}
+
+.aboutProject__item {
+    max-width: 550px;
+    margin: 70px 40px 0 0;
+}
+
+.aboutProject__item:last-of-type {
+    margin: 70px 0 0 0;
+}
+
+.aboutProject__subtitle {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -0.04em;
+}
+
+.aboutProject__paragraph {
+    margin-top: 26px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.aboutProject__progressBar {
+    width: 1140px;
+    display: flex;
+    flex-direction: row;
+}
+
+.aboutProject__backend {
+    height: 67px;
+
+}
+
+.aboutProject__backend_text {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #000000;
+    /*padding: 0;*/
+    padding: 0;
+    margin: 0;
+    width: 228px;
+    height: 36px;
+    border: none;
+    background-color: #3DDC84;
+}
+.aboutProject__stack {
+    display: flex;
+    flex-direction: row;
+    width: 1140px;
+}
+
+.aboutProject__stack_text {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #8B8B8B;
+    width: 200px;
+    margin: 14px auto 0;
+}
+
+.aboutProject__frontend {
+    height: 67px;
+}
+
+.aboutProject__frontend_text {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+    background: #303030;
+    width: 912px;
+    height: 36px;
+    border: none;
+}
