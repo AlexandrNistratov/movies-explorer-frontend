@@ -8,7 +8,7 @@ function Movies() {
     return (
         <section className='movies'>
             <SearchForm />
-            <Preloader />
+            {/*<Preloader />*/}
             <MoviesCardList />
         </section>
     );

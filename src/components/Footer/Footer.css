@@ -1,15 +1,16 @@
 .footer {
     color: #FFFFFF;
     display: flex;
+    max-width: 1140px;
+    width: 100%;
 }
 
 .footer__content {
     display: flex;
     flex-direction: column;
-    max-width: 1140px;
     width: 100%;
     justify-content: center;
-    margin: 0 70px;
+    margin: 0;
     padding: 0;
 }
 
