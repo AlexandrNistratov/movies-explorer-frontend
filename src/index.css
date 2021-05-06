@@ -18,3 +18,13 @@
 @import url(./components/Portfolio/Portfolio.css);
 
 @import url(./components/Footer/Footer.css);
+
+@import url(./components/Movies/Movies.css);
+
+@import url(./components/SearchForm/SearchForm.css);
+
+@import url(./components/Preloader/Preloader.css);
+
+@import url(./components/FilterCheckbox/FilterCheckbox.css);
+
+@import url(./components/MoviesCardList/MoviesCardList.css);
