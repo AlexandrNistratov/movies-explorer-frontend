@@ -1,8 +1,14 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 import moviesCard from '../../images/moviescard.jpg'
 
 function MoviesCard () {
+
+    const location = useLocation();
+
+    const isSavedMoviesPage = location.pathname === "/saved-movies";
+
     return (
         <li className='movieCard'>
             <img className='movieCard__image' src={moviesCard} alt="Картинка"/>
@@ -11,7 +17,7 @@ function MoviesCard () {
                     <h2 className='movieCard__title'>33 слова о дизайне</h2>
                     <p className='movieCard__duration'>1ч42м</p>
                 </div>
-                <button className='movieCard__button'></button>
+                <button className={isSavedMoviesPage ? 'movieCard__button-delete ' : 'movieCard__button '}></button>
             </div>
         </li>
     );

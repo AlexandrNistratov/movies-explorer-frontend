@@ -26,7 +26,23 @@ function Header() {
                         <nav className='header__nav'>
                             <ul className='header__links'>
                                 <Link className='header__nav-link'  to="/">Фильмы</Link>
-                                <Link className='header__nav-link header__nav-link-normal'  to="/">Сохранённые фильмы</Link>
+                                <Link className='header__nav-link header__nav-link-normal'  to="/saved-movies">Сохранённые фильмы</Link>
+                            </ul>
+                            <button className='header__button header__button-grey'>
+                                <Link className='header__nav-button header__nav-button-grey'  to="/">Аккаунт</Link>
+                            </button>
+                        </nav>
+                    </div>
+                </header>
+            </Route>
+            <Route exact path='/saved-movies'>
+                <header className='header header__movies'>
+                    <div className='header__content'>
+                        <img className='header__logo' src={logo} alt="Логотип" />
+                        <nav className='header__nav'>
+                            <ul className='header__links'>
+                                <Link className='header__nav-link'  to="/">Фильмы</Link>
+                                <Link className='header__nav-link header__nav-link-normal'  to="/saved-movies">Сохранённые фильмы</Link>
                             </ul>
                             <button className='header__button header__button-grey'>
                                 <Link className='header__nav-button header__nav-button-grey'  to="/">Аккаунт</Link>
