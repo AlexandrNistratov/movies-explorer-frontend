@@ -31,10 +31,15 @@
     width: 1058px;
 }
 
+.header__nav__movies {
+    justify-content: space-between;
+}
+
 .header__links {
     margin: 0;
     display: flex;
     justify-content: space-between;
+    padding: 0;
 }
 
 
