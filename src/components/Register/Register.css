@@ -1,0 +1,55 @@
+.register {
+    max-width: 396px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.register__title {
+    text-align: start;
+    margin: 0 0 40px;
+}
+
+.register__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.register__label {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+    color: #8B8B8B;
+    margin: 0 0 10px;
+}
+
+.register__input {
+    background: #2F2F2F;
+    border-radius: 8px;
+    height: 46px;
+    margin: 0 0 20px;
+    border: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+    color: #FFFFFF;
+}
+
+.register__button {
+    margin: 82px 0 0;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #FFFFFF;
+    max-width: 396px;
+    width: 100%;
+    height: 45px;
+    background: #4285F4;
+    border-radius: 3px;
+    border: none;
+}

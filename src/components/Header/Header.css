@@ -6,6 +6,15 @@
     justify-content: center;
 }
 
+.header__movies {
+    background: #202020;
+    max-width: 1140px;
+}
+
+.header-sign {
+    height: 148px;
+}
+
 .header__content {
     display: flex;
     max-width: 1140px;
@@ -14,14 +23,18 @@
     justify-content: space-between;
 }
 
-.header__movies {
-    background: #202020;
+.header__content-sign {
+    max-width: 396px;
 }
 
 .header__logo {
     width: 38px;
     height: 38px;
     margin: 18px 0 0;
+}
+
+.header__logo-sign {
+    margin: 70px 0 40px;
 }
 
 .header__nav {
