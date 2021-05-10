@@ -1,5 +1,6 @@
 .filterCheckbox {
-    width: 226px;
+    max-width: 226px;
+    width: 100%;
     height: 40px;
     border-left: 1px solid #424242;
     margin: 16px 0;

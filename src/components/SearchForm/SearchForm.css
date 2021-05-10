@@ -2,8 +2,10 @@
     display: flex;
     max-width: 1140px;
     width: 100%;
-    border-bottom: 1px solid #424242;
+    /*border-bottom: 1px solid #424242;*/
     margin: 0 0 10px;
+    justify-content: center;
+    padding: 0 70px;
 }
 
 .search__form {
@@ -11,7 +13,10 @@
     border-radius: 9px;
     display: flex;
     width: 100%;
-    margin: 70px auto 80px;
+    margin: 70px 0 80px;
+    justify-content: space-between;
+    justify-content: space-between;
+    max-width: 1140px;
 
 }
 
@@ -23,16 +28,23 @@
     margin: 19px 10px 19px 19px;
 }
 
+.search__container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 850px;
+}
+
 .search__input {
     padding: 0;
     background: #2F2F2F;
     border: none;
-    flex-basis: 750px;
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
     line-height: 20px;
     color: #8B8B8B;
+    width: 100%;
 }
 
 .search__button {

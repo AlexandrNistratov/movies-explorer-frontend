@@ -7,12 +7,14 @@ function SearchForm () {
         <section className='search'>
             <form className='search__form'>
                 <div className='search__image'></div>
-                <input
-                    className='search__input'
-                    type="text"
-                    placeholder='Фильм'
-                />
-                <button className='search__button'>Найти</button>
+                <div className='search__container'>
+                    <input
+                        className='search__input'
+                        type="text"
+                        placeholder='Фильм'
+                    />
+                    <button className='search__button'>Найти</button>
+                </div>
                 <FilterCheckbox />
             </form>
         </section>

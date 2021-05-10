@@ -23,7 +23,7 @@ function App() {
             </Route>
             <Route exact path='/movies'>
                 <Header />
-                {/*<Movies />*/}
+                <Movies />
                 {/*<Footer />*/}
             </Route>
             {/*<Route exact path='/saved-movies'>*/}

@@ -28,7 +28,7 @@ function Navigation() {
                 ) :
                 (
                     <header className='header header__movies'>
-                        <div className='header__content'>
+                        <div className='header__content header__content-movies'>
                             <img className='header__logo' src={logo} alt="Логотип" />
                             <nav className='header__nav header__nav__movies'>
                                 <ul className='header__links'>
