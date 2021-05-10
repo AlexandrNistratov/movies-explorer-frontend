@@ -8,23 +8,25 @@ function MoviesCardList () {
         <Switch>
             <Route exact path='/movies'>
                 <section className='moveCardList' >
-                    <div className='moveCardList__content'>
-                        <MoviesCard />
-                        <MoviesCard />
-                        <MoviesCard />
-                        <MoviesCard />
-                        <MoviesCard />
-                        <MoviesCard />
-                        <MoviesCard />
-                        <MoviesCard />
-                        <MoviesCard />
-                        <MoviesCard />
-                        <MoviesCard />
-                        <MoviesCard />
-                        <MoviesCard />
-                        <MoviesCard />
-                        <MoviesCard />
-                        <MoviesCard />
+                    <div className='moveCardList__container'>
+                        <div className='moveCardList__content'>
+                            <MoviesCard />
+                            <MoviesCard />
+                            <MoviesCard />
+                            <MoviesCard />
+                            <MoviesCard />
+                            <MoviesCard />
+                            <MoviesCard />
+                            <MoviesCard />
+                            <MoviesCard />
+                            <MoviesCard />
+                            <MoviesCard />
+                            <MoviesCard />
+                            <MoviesCard />
+                            <MoviesCard />
+                            <MoviesCard />
+                            <MoviesCard />
+                        </div>
                     </div>
                     <button className='moveCardList__button'>Ещё</button>
                 </section>

@@ -9,7 +9,7 @@ function Movies() {
         <section className='movies'>
             <SearchForm />
             {/*<Preloader />*/}
-            {/*<MoviesCardList />*/}
+            <MoviesCardList />
         </section>
     );
 }

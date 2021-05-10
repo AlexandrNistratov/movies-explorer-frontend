@@ -1,11 +1,19 @@
 .filterCheckbox {
     max-width: 226px;
     width: 100%;
-    height: 40px;
-    border-left: 1px solid #424242;
-    margin: 16px 0;
+    height: 72px;
+    margin: 70px 0 80px;
     display: flex;
     align-items: center;
+    background: #2F2F2F;
+    border-radius: 0 9px 9px 0 ;
+}
+
+.filterCheckbox__container {
+    display: flex;
+    height: 40px;
+    align-items: center;
+    border-left: 1px solid #424242;
 }
 
 .filterCheckbox__button {
@@ -52,4 +60,37 @@
     font-size: 13px;
     line-height: 18px;
     color: #FFFFFF;
+}
+
+@media screen and (max-width: 768px) {
+    .filterCheckbox__button {
+        margin: 0 15px 0 19px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .filterCheckbox {
+        margin: 46px 0 80px;
+        background: #202020;
+        justify-content: center;
+    }
+
+    .filterCheckbox__container {
+        border-left: none;
+    }
+
+    .filterCheckbox__text {
+        font-size: 11px;
+        line-height: 18px;
+    }
+
+    .filterCheckbox__button {
+        margin: 0 13px 0 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .filterCheckbox {
+        background: #202020;
+    }
 }
