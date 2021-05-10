@@ -2,6 +2,7 @@
     color: #FFFFFF;
     display: flex;
     margin: 0 0 100px 0;
+    padding: 0 70px;
 }
 
 .aboutMe__main {
@@ -10,22 +11,22 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 0 70px;
-}
-
-.aboutMe__title {
-    margin: 110px 0 23px;
+    margin: 0;
 }
 
 .aboutMe__content {
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     margin: 0;
     border-top: 1px solid #DADADA;
+    justify-content: space-between;
+    height: 100%;
+    padding: 66px 0 0;
 }
 .abotMe__profile {
     max-width: 600px;
+    margin: 0 10px 0 0;
 }
 
 .aboutMe__subtitle {
@@ -34,7 +35,7 @@
     font-size: 50px;
     line-height: 58px;
     letter-spacing: -0.04em;
-    margin: 66px auto 18px 0;
+    margin: 0 0 18px 0;
     max-width: 600px;
 }
 
@@ -57,10 +58,13 @@
 }
 
 .aboytMe__avatar {
-    width: 270px;
+    width: 100%;
+    max-width: 270px;
     height: 327px;
-    margin: 66px 0 0 270px;
+    margin: 0;
     border-radius: 10px;
+    object-position: center;
+    object-fit: cover;
 }
 
 .aboutMe__nav {
@@ -84,4 +88,83 @@
 
 .aboutMe__link:last-of-type {
     margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .aboutMe {
+        padding: 0 50px;
+    }
+
+    .aboutMe__subtitle {
+        font-size: 40px;
+        line-height: 40px;
+        margin: 66px 0 16px;
+    }
+
+    .aboutMe__text {
+        font-size: 12px;
+        line-height: 18px;
+        margin: 0 0 20px;
+    }
+
+    .aboutMe__paragraph {
+        font-size: 12px;
+        line-height: 18px;
+        max-width: 364px;
+    }
+
+    .aboutMe__nav {
+        margin: 87px 0 0;
+    }
+
+    .aboytMe__avatar {
+        max-width:  255px;
+        height: 307px;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .aboutMe {
+        padding: 0 14px;
+    }
+
+    .aboutMe__content {
+        flex-direction: column;
+        align-items: center;
+        padding: 60px 0 0;
+    }
+
+    .aboutMe__subtitle {
+        font-size: 30px;
+        line-height: 36px;
+        margin: 40px 0 20px;
+    }
+
+    .aboutMe__text {
+        font-size: 11px;
+        line-height: 16px;
+        margin: 0 0 20px;
+    }
+
+    .aboutMe__paragraph {
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .aboutMe__nav {
+        margin: 40px 0 0;
+    }
+
+    .aboutMe__link {
+        margin: 0 26px 0 0;
+    }
+
+    .aboytMe__avatar {
+        max-width:  292px;
+        height: 352px;
+        width: 100%;
+        margin: 0;
+    }
+
 }

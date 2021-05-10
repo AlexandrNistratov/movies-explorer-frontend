@@ -17,3 +17,9 @@
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
 }
+
+@media screen and (max-width: 768px){
+ .page {
+     max-width: 768px;
+ }
+}

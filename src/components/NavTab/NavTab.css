@@ -25,6 +25,16 @@
     line-height: 16px;
     display: flex;
     align-items: center;
-    /*text-decoration-line: underline;*/
     color: #FFFFFF;
 }
+
+@media screen and (max-width: 450px) {
+    .navTab__links {
+        margin-right: 24px;
+    }
+
+    .navTab__item {
+        font-size: 11px;
+    }
+}
+

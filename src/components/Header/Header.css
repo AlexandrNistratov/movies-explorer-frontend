@@ -8,7 +8,6 @@
 
 .header__movies {
     background: #202020;
-    max-width: 1140px;
 }
 
 .header-sign {
@@ -23,6 +22,10 @@
     justify-content: space-between;
 }
 
+.header__content-movies {
+    padding: 0 70px;
+}
+
 .header__content-sign {
     max-width: 396px;
 }
@@ -30,7 +33,7 @@
 .header__logo {
     width: 38px;
     height: 38px;
-    margin: 18px 0 0;
+    margin: 18px 44px 0 0;
 }
 
 .header__logo-sign {
@@ -98,9 +101,54 @@
     line-height: 16px;
     text-decoration: none;
     color: #000000;
+    vertical-align: middle;
+    justify-content: center;
+    display: flex;
 }
 
 .header__nav-button-grey {
     font-size: 14px;
     color: #FFFFFF;
+}
+
+@media screen and (max-width: 1200px){
+    .header__logo {
+        margin: 18px 44px 18px 30px;
+    }
+
+    .header__nav {
+        margin: 18px 30px 0 0;
+    }
+
+}
+
+@media screen and (max-width: 788px) {
+    .header__nav__movies {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 480px){
+    .header__logo {
+        margin: 18px 44px 18px 14px;
+    }
+
+    .header__nav {
+        margin: 24px 14px 24px 0;
+    }
+
+    .header__nav-link {
+        font-size: 10px;
+        margin: 6px 14px 0 0;
+    }
+
+    .header__button {
+        width: 54px;
+        height: 26px;
+    }
+
+    .header__nav-button {
+        font-size: 10px;
+    }
 }
