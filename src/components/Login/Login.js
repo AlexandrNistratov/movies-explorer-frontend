@@ -4,8 +4,8 @@ import {Link, Route, Switch} from 'react-router-dom';
 function Login () {
     return (
         <section className='login'>
-            <h1 className='profile__title register__title'>Рады видеть!</h1>
             <form className='register__form'>
+                <h1 className='profile__title register__title'>Рады видеть!</h1>
                 <label className='register__label'>E-mail</label>
                 <input id='profile__input' className='register__input' type="text" />
                 <label className='register__label'>Пароль</label>

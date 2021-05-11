@@ -94,3 +94,37 @@
     margin: 0;
     color: #EE3465;
 }
+
+@media screen and (max-width: 768px) {
+    .profile__container {
+        margin-top: 236px;
+        padding: 0 30px;
+    }
+
+    .profile__title {
+        margin: 0 0 96px;
+    }
+
+    .profile__edit:last-of-type {
+        margin: 0 0 210px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .profile__container {
+        margin-top: 70px;
+    }
+
+    .profile__title {
+        margin: 0 0 80px;
+    }
+
+    .profile__edit:last-of-type {
+        margin: 0 0 379px;
+    }
+
+    .profile__button {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}

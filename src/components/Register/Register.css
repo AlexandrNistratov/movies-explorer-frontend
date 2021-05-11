@@ -53,3 +53,24 @@
     border-radius: 3px;
     border: none;
 }
+
+@media screen and (max-width: 768px) {
+    .register__form {
+        max-width: 396px;
+    }
+
+    .register__button {
+        margin: 69px 0 0;
+    }
+}
+@media screen and (max-width: 480px) {
+    .register__form {
+        padding: 0 14px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .register__button {
+        margin: 157px 0 0;
+    }
+}

@@ -5,8 +5,8 @@ import {Route, Switch, Link} from 'react-router-dom';
 function Register () {
     return(
         <section className='register'>
-            <h1 className='profile__title register__title'>Добро пожаловать!</h1>
             <form className='register__form'>
+                <h1 className='profile__title register__title'>Добро пожаловать!</h1>
                 <label className='register__label'>Имя</label>
                 <input id="user-name" className='register__input' type="name" />
                 <span className="error" id="user-name-error"></span>

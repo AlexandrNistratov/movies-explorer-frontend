@@ -35,10 +35,6 @@
     margin: 0 44px 0 0;
 }
 
-/*.header__logo-movies {*/
-/*    margin: 18px 44px 18px 0;*/
-/*}*/
-
 .header__logo-sign {
     margin: 70px 0 40px;
 }
@@ -52,6 +48,12 @@
 
 .header__nav__movies {
     justify-content: space-between;
+}
+
+.burger__img {
+    display: none;
+    width: 44px;
+    height: 44px;
 }
 
 .header__links {
@@ -118,8 +120,24 @@
 }
 
 @media screen and (max-width: 768px) {
+    .burger__img {
+        display: block;
+    }
+
+    .header__nav_movies {
+        display: none;
+    }
+
+    .header-sign {
+        height: 272px;
+    }
+
     .header__content {
         padding: 0 30px;
+    }
+
+    .header__logo-sign {
+        margin: 232px 0 40px;
     }
 }
 
@@ -141,5 +159,10 @@
 
     .header__nav-button {
         font-size: 10px;
+    }
+
+    .burger__img {
+        width: 40px;
+        height: 43px;
     }
 }

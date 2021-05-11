@@ -24,28 +24,28 @@ function App() {
             <Route exact path='/movies'>
                 <Header />
                 <Movies />
-                {/*<Footer />*/}
+                <Footer />
             </Route>
-            {/*<Route exact path='/saved-movies'>*/}
-            {/*    <Header />*/}
-            {/*    <SavedMovies />*/}
-            {/*    <Footer />*/}
-            {/*</Route>*/}
-            {/*<Route exact path='/profile'>*/}
-            {/*    <Header />*/}
-            {/*    <Profile />*/}
-            {/*</Route>*/}
-            {/*<Route exact path='/signup'>*/}
-            {/*    <Header />*/}
-            {/*    <Register />*/}
-            {/*</Route>*/}
-            {/*<Route exact path='/signin'>*/}
-            {/*    <Header />*/}
-            {/*    <Login />*/}
-            {/*</Route>*/}
-            {/*<Route exact path='/123'>*/}
-            {/*    <NotFound />*/}
-            {/*</Route>*/}
+            <Route exact path='/saved-movies'>
+                <Header />
+                <SavedMovies />
+                <Footer />
+            </Route>
+            <Route exact path='/profile'>
+                <Header />
+                <Profile />
+            </Route>
+            <Route exact path='/signup'>
+                <Header />
+                <Register />
+            </Route>
+            <Route exact path='/signin'>
+                <Header />
+                <Login />
+            </Route>
+            <Route exact path='/123'>
+                <NotFound />
+            </Route>
         </Switch>
     </div>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 
-import moviesCard from '../../images/moviescard.jpg'
+import moviesCard from '../../images/cardimage.svg';
 
 function MoviesCard () {
 

@@ -1,25 +1,22 @@
 .moveCardList {
     display: flex;
-    /*width: 100%;*/
     margin: 10px 0 0;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-}
-
-.moveCardList__container {
     padding: 0 70px;
 }
 
 .moveCardList__content {
     display: grid;
     grid-template-columns: repeat(4, 1fr) ;
-    grid-auto-rows: 1fr;
     grid-column-gap: 20px;
     grid-row-gap: 32px;
-    margin: 70px 0 80px;
-    /*max-width: 1140px;*/
-    /*width: 100%;*/
+    margin: 0 0 80px;
+    justify-content: center;
+    width: 100%;
+    border-top: 1px solid #424242;
+    padding-top: 80px;
 }
 
 .moveCardList__button {
@@ -40,5 +37,36 @@
     padding: 0;
     justify-content: center;
     cursor: pointer;
-    margin: 0 0 160px;
+    margin: 0 0 80px;
+}
+
+@media screen and (max-width: 900px) {
+    .moveCardList {
+        padding: 0 30px;
+    }
+
+    .moveCardList__content {
+        grid-template-columns: repeat(2, 1fr) ;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .moveCardList {
+        padding: 0 30px;
+    }
+
+    .moveCardList__content {
+        grid-template-columns: repeat(2, 1fr) ;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .moveCardList {
+        padding: 0 10px;
+    }
+
+    .moveCardList__content {
+        grid-template-columns: 1fr ;
+        padding-top: 50px;
+    }
 }
