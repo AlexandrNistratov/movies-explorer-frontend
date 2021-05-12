@@ -17,7 +17,7 @@ function MoviesCard () {
                     <h2 className='movieCard__title'>33 слова о дизайне</h2>
                     <p className='movieCard__duration'>1ч42м</p>
                 </div>
-                <button className={isSavedMoviesPage ? 'movieCard__button-delete ' : 'movieCard__button '}></button>
+                <button className={isSavedMoviesPage ? 'movieCard__button-delete ' : 'movieCard__button-active'}></button>
             </div>
         </li>
     );
