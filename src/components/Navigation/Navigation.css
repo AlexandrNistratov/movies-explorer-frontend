@@ -11,9 +11,9 @@
     z-index: 100;
 }
 
-/*.burger__active {*/
-/*    display: flex;*/
-/*}*/
+.burger__active {
+    display: flex;
+}
 
 .burger__menu {
     position: relative;
@@ -52,6 +52,11 @@
     cursor: pointer;
 }
 
+.burger__links {
+    display: flex;
+    flex-direction: column;
+}
+
 .burger__link {
     font-style: normal;
     font-weight: 500;
@@ -60,6 +65,12 @@
     text-align: center;
     color: #FFFFFF;
     margin: 0 0 28px;
+}
+/*Подчеркивание ссылок в бургере*/
+.burger__link-active {
+    border-bottom: 2px solid white;
+    padding-bottom: 4px;
+    align-self: center;
 }
 
 .burger__link:last-of-type {
