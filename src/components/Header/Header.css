@@ -42,11 +42,11 @@
 .header__nav {
     margin: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     width: 100%;
 }
 
-.header__nav__movies {
+.header__nav_movies {
     justify-content: space-between;
 }
 
