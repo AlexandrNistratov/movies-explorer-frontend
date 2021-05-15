@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Route, Switch, Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 
 function Register () {

@@ -2,7 +2,7 @@ import React from 'react';
 
 function Techs() {
     return (
-        <section className='techs'>
+        <section className='techs' id='techs'>
             <div className='techs__main'>
                 <h2 className='aboutProject__title'>Технологии</h2>
                 <div className='techs__content'>

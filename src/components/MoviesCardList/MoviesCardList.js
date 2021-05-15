@@ -1,32 +1,22 @@
 import React from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import MoviesCard from '../MoviesCard/MoviesCard';
 
-function MoviesCardList () {
+import {getMovieNumber} from '../../utils/utils';
+
+function MoviesCardList ({ cards, loadMovies }) {
+
     return (
         <Switch>
             <Route exact path='/movies'>
                 <section className='moveCardList' >
                         <div className='moveCardList__content'>
-                            <MoviesCard />
-                            <MoviesCard />
-                            <MoviesCard />
-                            <MoviesCard />
-                            <MoviesCard />
-                            <MoviesCard />
-                            <MoviesCard />
-                            <MoviesCard />
-                            <MoviesCard />
-                            <MoviesCard />
-                            <MoviesCard />
-                            <MoviesCard />
-                            <MoviesCard />
-                            <MoviesCard />
-                            <MoviesCard />
-                            <MoviesCard />
+                            {
+                                cards.slice(0, getMovieNumber()).map((moviesCard) => <MoviesCard key={moviesCard.id} moviesCard={moviesCard} />)
+                            }
                         </div>
-                    <button className='moveCardList__button'>Ещё</button>
+                    <button className='moveCardList__button' onClick={loadMovies}>Ещё</button>
                 </section>
             </Route>
             <Route exact path='/saved-movies'>
