@@ -1,0 +1,130 @@
+.profile {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 1140px;
+    color: #FFFFFF;
+    width: 100%;
+}
+
+.profile__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 74px;
+}
+
+.profile__title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    margin: 0 0 123px;
+    padding: 0;
+    color: #ffffff;
+}
+
+.profile__form {
+    display: flex;
+    flex-direction: column;
+    max-width: 410px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.profile__edit {
+    display: flex;
+    height: 30px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #424242;
+    margin: 0 0 17px;
+    align-items: flex-end;
+}
+
+.profile__edit:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin: 0 0 220px;
+    align-items: flex-start;
+}
+
+
+.profile__input {
+    background: #202020;
+    border: none;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+    color: #ffffff;
+    height: 14px;
+    max-width: 360px;
+    width: 100%;
+}
+
+.profile__label {
+    max-width: 50px;
+    width: 100%;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+    color: #FFFFFF;
+    padding: 0;
+    margin: 0;
+}
+
+.profile__button {
+    border: none;
+    margin: 0 0 16px;
+    padding: 0;
+    background: #202020;
+    color: #FFFFFF;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.profile__button-exit {
+    margin: 0;
+    color: #EE3465;
+}
+
+@media screen and (max-width: 768px) {
+    .profile__container {
+        margin-top: 236px;
+        padding: 0 30px;
+    }
+
+    .profile__title {
+        margin: 0 0 96px;
+    }
+
+    .profile__edit:last-of-type {
+        margin: 0 0 210px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .profile__container {
+        margin-top: 70px;
+    }
+
+    .profile__title {
+        margin: 0 0 80px;
+    }
+
+    .profile__edit:last-of-type {
+        margin: 0 0 379px;
+    }
+
+    .profile__button {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}

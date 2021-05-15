@@ -1,0 +1,97 @@
+.movieCard {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 10px;
+    background: #222222;
+    align-items: center;
+}
+
+.movieCard__image {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.movieCard__items {
+    max-height: 67px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.movieCard__text {
+margin: 14px 0 10px 12px;
+}
+
+.movieCard__title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #FFFFFF;
+    margin: 0 0 10px;
+}
+
+.movieCard__duration {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #8B8B8B;
+    margin: 0 0 14px;
+}
+
+.movieCard__button {
+    box-shadow: none;
+    /*padding: 0;*/
+    cursor: pointer;
+    outline: none;
+    width: 16px;
+    height: 16px;
+    border: none;
+    margin: 14px 12px 0 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background: url("../../images/cardbutton.svg");
+}
+
+.movieCard__button-active {
+    box-shadow: none;
+    padding-left: 16px;
+    padding-bottom: 15px;
+    padding-top: 16px;
+    cursor: pointer;
+    outline: none;
+    width: 16px;
+    height: 16px;
+    border: none;
+    margin: 14px 12px 0 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background: url("../../images/cardbutton-active.svg");
+}
+
+.movieCard__button-delete {
+    box-shadow: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+    width: 16px;
+    height: 16px;
+    border: none;
+    margin: 14px 12px 0 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background: url("../../images/cardbotton-delete.svg");
+}
+
+
+@media screen and (max-width: 900px) {
+
+}
