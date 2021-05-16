@@ -40,6 +40,10 @@
     margin: 0 0 80px;
 }
 
+.moveCardList__button-hidden {
+    display: none;
+}
+
 @media screen and (max-width: 900px) {
     .moveCardList {
         padding: 0 30px;

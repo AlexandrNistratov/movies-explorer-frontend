@@ -10,29 +10,11 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
 
-import movieApi from '../../utils/MoviesApi';
-import {loadMovies} from '../../utils/utils';
-import {getMovieNumber} from '../../utils/utils';
+
 
 function App() {
-    // Карточки с сервера
-    const [moviesCards, setMoviesCards] = React.useState([]);
-    const [ countMovies, setCountMovies] = React.useState(getMovieNumber())
 
-    React.useEffect(() => {
-        movieApi.getAllMovies()
-            .then(data => {
-                console.log(data)
-                setMoviesCards(data)
-            })
-            .catch(err => console.log(err))
-    }, []);
 
-    const handleClickMoreButton = () => {
-        console.log("вызвалась")
-        setCountMovies(countMovies + loadMovies());
-        console.log('отработала')
-    }
 
   return (
     <div className="App">
@@ -41,10 +23,7 @@ function App() {
                 <Main />
             </Route>
             <Route exact path='/movies'>
-                <Movies
-                cards={moviesCards}
-                loadMovies={handleClickMoreButton}
-                />
+                <Movies/>
             </Route>
             <Route exact path='/saved-movies'>
                 <SavedMovies />

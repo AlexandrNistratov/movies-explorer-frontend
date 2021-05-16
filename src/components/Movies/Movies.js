@@ -6,17 +6,14 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
-function Movies({ cards, loadMovies }) {
+function Movies() {
     return (
         <>
             <Header />
             <section className='movies'>
                 <SearchForm />
                 {/*<Preloader />*/}
-                <MoviesCardList
-                    cards={cards}
-                    loadMovies={loadMovies}
-                />
+                <MoviesCardList/>
             </section>
             <Footer />
         </>
