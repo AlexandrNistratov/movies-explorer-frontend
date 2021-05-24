@@ -1,11 +1,11 @@
 import React from 'react';
-import {Link, useLocation } from 'react-router-dom';
+import {Link } from 'react-router-dom';
 
 import logo from '../../images/logo.svg';
 import burgerImg from '../../images/burger.svg';
 
 
-function Navigation() {
+function Navigation({ loggedIn }) {
     const [ isBurgerMenuOpen, setBurgerMenuOpen ] = React.useState(false);
 
     function handleBurgerImgClick() {
@@ -15,26 +15,10 @@ function Navigation() {
     function closeBurgerMenu() {
         setBurgerMenuOpen(false);
     }
-
-    const location = useLocation();
-    const isMainPage = location.pathname === '/';
     return (
         <>
-            {isMainPage
+            {loggedIn
                 ?
-                (
-                    <header className='header'>
-                        <div className='header__content'>
-                            <img className='header__logo' src={logo} alt="Логотип" />
-                            <nav className='header__nav'>
-                                <Link className='header__nav-link'  to="/signup">Регистрация</Link>
-                                <button className='header__button'>
-                                    <Link className='header__nav-button'  to="/signin">Войти</Link>
-                                </button>
-                            </nav>
-                        </div>
-                    </header>
-                ) :
                 (
                     <header className='header header__movies'>
                         <div className='header__content header__content-movies'>
@@ -66,6 +50,19 @@ function Navigation() {
                             </nav>
                         </div>
 
+                    </header>
+                ) :
+                (
+                    <header className='header'>
+                        <div className='header__content'>
+                            <img className='header__logo' src={logo} alt="Логотип" />
+                            <nav className='header__nav'>
+                                <Link className='header__nav-link'  to="/signup">Регистрация</Link>
+                                <button className='header__button'>
+                                    <Link className='header__nav-button'  to="/signin">Войти</Link>
+                                </button>
+                            </nav>
+                        </div>
                     </header>
                 )
             }

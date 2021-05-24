@@ -40,6 +40,10 @@
     margin: 0 0 80px;
 }
 
+.moveCardList__button:hover {
+    opacity: 0.8;
+}
+
 .moveCardList__button-hidden {
     display: none;
 }

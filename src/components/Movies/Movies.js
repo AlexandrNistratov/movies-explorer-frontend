@@ -5,15 +5,32 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 // import Preloader from '../Preloader/Preloader';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import movieApi from '../../utils/MoviesApi';
 
-function Movies() {
+
+function Movies({ loggedIn, handleClickSaveButton, hasMoreButton }) {
+    const [ moviesCards, setMoviesCards ] = React.useState([]);
+
+    React.useEffect(() => {
+        movieApi.getAllMovies()
+            .then(data => {
+                setMoviesCards(data);
+                hasMoreButton(true);
+            })
+            .catch(err => console.log(err))
+    }, []);
+
     return (
         <>
-            <Header />
+            <Header
+                loggedIn={loggedIn} />
             <section className='movies'>
                 <SearchForm />
                 {/*<Preloader />*/}
-                <MoviesCardList/>
+                <MoviesCardList
+                    handleClickSaveButton={handleClickSaveButton}
+                    moviesCards={moviesCards}
+                    hasMoreButton={hasMoreButton} />
             </section>
             <Footer />
         </>

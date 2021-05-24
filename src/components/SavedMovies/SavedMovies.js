@@ -2,19 +2,21 @@ import React from 'react';
 
 
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import MoviesCard from '../MoviesCard/MoviesCard';
 import SearchForm from '../SearchForm/SearchForm';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
-function SavedMovies () {
+function SavedMovies ({ savedMovies, hasMoreButton, loggedIn, handleClickSaveButton }) {
+
     return (
        <>
-           <Header />
+           <Header loggedIn={loggedIn} />
            <section className='savedMovies'>
                <SearchForm />
-               <MoviesCardList>
-                   <MoviesCard />
+               <MoviesCardList
+                   hasMoreButton={hasMoreButton}
+                   moviesCards={savedMovies}
+                   handleClickSaveButton={handleClickSaveButton}>
                </MoviesCardList>
            </section>
            <Footer />
