@@ -8,6 +8,8 @@ function Profile ({ handleLogout, userData, onUpdateUser }) {
     const [name, setName] = React.useState(userData.name);
     const [email, setEmail] = React.useState(userData.email);
 
+    console.log(userData)
+
 
     const history = useHistory();
     const currentUser = React.useContext(CurrentUserContext);
@@ -25,7 +27,6 @@ function Profile ({ handleLogout, userData, onUpdateUser }) {
         setEmail(currentUser.email || email);
     }, [currentUser]);
 
-    console.log(currentUser)
 
 
     function handleSubmit(e) {

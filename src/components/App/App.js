@@ -12,6 +12,7 @@ import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
 
 import mainApi from '../../utils/MainApi';
+import movieApi from '../../utils/MoviesApi';
 
 function App() {
     const history = useHistory();
@@ -22,8 +23,10 @@ function App() {
     })
     const [currentUser, setCurrentUser] = React.useState('');
     const [loggedIn, setLoggedIn] = React.useState(false);
+    const [ moviesCards, setMoviesCards ] = React.useState([]);
     const [savedMovies, setSavedMovies] = React.useState([]);
     const [hasMoreButton, setHasMoreButton] = React.useState(false);
+    const [isLoading, setIsLoading] = React.useState(false);
 
     React.useEffect(() => {
         tokenCheck();
@@ -61,6 +64,13 @@ function App() {
 
     function handleLogout() {
         localStorage.removeItem('jwt');
+        setSavedMovies([]);
+        setUserData({
+            name: '',
+            email: '',
+            password: ''
+        });
+        setCurrentUser({});
         setLoggedIn(false);
         history.push('/')
 
@@ -71,7 +81,8 @@ function App() {
             .then((res) => {
                 if (res !== undefined && res._id) {
                     setUserData({
-                        email: res.email
+                        email: res.email,
+                        name: res.name
                     })
                     setTimeout(() => {
                         handleLogin(email, password);
@@ -109,10 +120,20 @@ function App() {
     }
 
     React.useEffect(() => {
+        if (!loggedIn) return;
         mainApi.getSavedMovies()
             .then(data => {
-                console.log(data)
                 setSavedMovies(data);
+
+            })
+            .catch(err => console.log(err))
+    }, [loggedIn]);
+
+    React.useEffect(() => {
+        movieApi.getAllMovies()
+            .then(data => {
+                setMoviesCards(data);
+                setIsLoading(true)
 
             })
             .catch(err => console.log(err))
@@ -129,6 +150,9 @@ function App() {
                   <Route exact path='/movies'>
                       <Movies
                           loggedIn={loggedIn}
+                          isLoading={isLoading}
+                          setIsLoading={setIsLoading}
+                          moviesCards={moviesCards}
                           handleClickSaveButton={handleClickSaveButton}
                           hasMoreButton={setHasMoreButton} />
                   </Route>

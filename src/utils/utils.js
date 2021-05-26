@@ -4,7 +4,7 @@ export const base_url = `${window.location.protocol}${process.env.REACT_APP_API_
 // export const base_url = 'https://api.movies-attachment.nomoredomains.icu';
 // Если нет картинки, покажи эту катинку
 export const getCardImage = (moviesCard) => {
-    if (moviesCard.image.url) {
+    if (moviesCard.image && moviesCard.image.url) {
         return `https://api.nomoreparties.co${moviesCard.image.url}`
     }
     if(moviesCard.image) {
@@ -41,3 +41,19 @@ export const getMovieKey = (card) => {
     if (card.movieId) return card.movieId;
     return "key";
 };
+
+function isCyrillic(str) {
+    return /[а-яё]/i.test(str);
+}
+
+export const handleFilterMovies = (movies, value) => {
+    return movies.filter((movie) => {
+        if(isCyrillic(value)) {
+            return movie.nameRU.toLowerCase().includes(value.toLowerCase());
+        }
+        if (movie.nameEN) {
+            return  movie.nameEN.toLowerCase().includes(value.toLowerCase())
+        }
+    })
+}
+

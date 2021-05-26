@@ -22,9 +22,8 @@ function Register ({ handleRegister }) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        const {regEmail, regPassword, regName } = data;
-        handleRegister(regEmail, regPassword, regName);
-        console.log(regName, regEmail)
+        const { regName, regEmail, regPassword } = data;
+        handleRegister(regName, regEmail, regPassword);
     }
 
     return(
