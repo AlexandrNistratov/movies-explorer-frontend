@@ -3,14 +3,14 @@ import { useLocation } from 'react-router-dom';
 
 import { getCardImage, getMovieDuration } from '../../utils/utils';
 
-function MoviesCard ({ moviesCard, clickSaveButton }) {
+function MoviesCard ({ moviesCard, handleClickSaveButton }) {
 
     const location = useLocation();
 
     const isSavedMoviesPage = location.pathname === "/saved-movies";
 
     const handleCardClick = () => {
-        clickSaveButton(moviesCard);
+        handleClickSaveButton(moviesCard);
     }
 
     return (
@@ -23,7 +23,11 @@ function MoviesCard ({ moviesCard, clickSaveButton }) {
                     <h2 className='movieCard__title'>{moviesCard.nameRU}</h2>
                     <p className='movieCard__duration'>{getMovieDuration(moviesCard)}</p>
                 </div>
-                <button className={isSavedMoviesPage ? 'movieCard__button-delete ' : 'movieCard__button movieCard__button-active'}  onClick={handleCardClick}/>
+                {isSavedMoviesPage ?
+                    <button className='movieCard__button-delete '  onClick={handleCardClick}/>
+                    :
+                    <button className={moviesCard.isSaved ? 'movieCard__button movieCard__button-active' : 'movieCard__button'} onClick={handleCardClick}/>
+                }
             </div>
         </li>
     );

@@ -57,3 +57,11 @@ export const handleFilterMovies = (movies, value) => {
     })
 }
 
+export const handleCheckSaved = (movies, savedMovies) => {
+    savedMovies.forEach((savedMovie) => {
+        const myMovies = movies.find((item) => item.nameRU === savedMovie.nameRU);
+        myMovies.isSaved = true;
+    })
+    return movies;
+}
+

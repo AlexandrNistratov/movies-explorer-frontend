@@ -15,7 +15,7 @@ function MoviesCardList ({ handleClickSaveButton, cards, hasMoreButton }) {
         <section className='moveCardList' >
             <div className='moveCardList__content'>
                 {
-                    cards.slice(0, countMovies).map((moviesCard) => <MoviesCard key={getMovieKey(moviesCard)} moviesCard={moviesCard}  clickSaveButton={handleClickSaveButton} />)
+                    cards.slice(0, countMovies).map((moviesCard) => <MoviesCard key={getMovieKey(moviesCard)} moviesCard={moviesCard}  handleClickSaveButton={handleClickSaveButton} />)
                 }
             </div>
             {hasMoreButton ?

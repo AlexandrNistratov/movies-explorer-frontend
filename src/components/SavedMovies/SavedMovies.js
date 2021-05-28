@@ -7,7 +7,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
 function SavedMovies ({ savedMovies, hasMoreButton, loggedIn, handleClickSaveButton }) {
-    console.log(savedMovies)
+
 
     return (
        <>
@@ -15,7 +15,7 @@ function SavedMovies ({ savedMovies, hasMoreButton, loggedIn, handleClickSaveBut
            <section className='savedMovies'>
                <SearchForm />
                <MoviesCardList
-                   hasMoreButton={hasMoreButton}
+                   hasMoreButton={false}
                    cards={savedMovies}
                    handleClickSaveButton={handleClickSaveButton}>
                </MoviesCardList>

@@ -13,6 +13,7 @@ import NotFound from '../NotFound/NotFound';
 
 import mainApi from '../../utils/MainApi';
 import movieApi from '../../utils/MoviesApi';
+import { handleCheckSaved } from '../../utils/utils';
 
 function App() {
     const history = useHistory();
@@ -98,8 +99,12 @@ function App() {
     }
 
     const  handleSaveMovies = (movie) => {
+        if (movie._id) {
+            return;
+        }
         mainApi.addNewCards(movie)
             .then((newCard) => {
+                console.log(newCard)
                 setSavedMovies([newCard, ...savedMovies]);
             }).catch((err) => alert(err));
     }
@@ -107,22 +112,26 @@ function App() {
     const handleDeleteMovies = (movie) => {
         mainApi.deleteCards(movie._id)
             .then(() => {
-                const filterCard = savedMovies.filter((item) => item._id !== movie._id)
-                setSavedMovies(filterCard)
+                const filterCard = savedMovies.filter((item) => item._id !== movie._id);
+                setSavedMovies(filterCard);
+
             })
     }
 
     const handleClickSaveButton = (movie) => {
-        if (!movie._id) {
+        if (!movie._id && !movie.isSaved) {
            return  handleSaveMovies(movie);
         }
         return handleDeleteMovies(movie)
     }
 
+
+
     React.useEffect(() => {
         if (!loggedIn) return;
-        mainApi.getSavedMovies()
+            mainApi.getSavedMovies()
             .then(data => {
+                console.log(savedMovies)
                 setSavedMovies(data);
 
             })
@@ -132,7 +141,7 @@ function App() {
     React.useEffect(() => {
         movieApi.getAllMovies()
             .then(data => {
-                setMoviesCards(data);
+                setMoviesCards(handleCheckSaved(data, savedMovies));
                 setIsLoading(true)
 
             })
@@ -160,7 +169,7 @@ function App() {
                       <SavedMovies
                           loggedIn={loggedIn}
                           savedMovies={savedMovies}
-                          hasMoreButton={setHasMoreButton}
+                          hasMoreButton={hasMoreButton}
                           handleClickSaveButton={handleClickSaveButton} />
                   </Route>
                   <Route exact path='/profile'>
