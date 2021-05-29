@@ -10,6 +10,7 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import mainApi from '../../utils/MainApi';
 import movieApi from '../../utils/MoviesApi';
@@ -99,9 +100,6 @@ function App() {
     }
 
     const  handleSaveMovies = (movie) => {
-        if (movie._id) {
-            return;
-        }
         mainApi.addNewCards(movie)
             .then((newCard) => {
                 console.log(newCard)
@@ -110,7 +108,10 @@ function App() {
     }
 
     const handleDeleteMovies = (movie) => {
-        mainApi.deleteCards(movie._id)
+        const movieId = movie.id || movie.movieId;
+        const userMovie = savedMovies.find((savedMovie) => savedMovie.movieId === movieId);
+
+        mainApi.deleteCards(userMovie._id)
             .then(() => {
                 const filterCard = savedMovies.filter((item) => item._id !== movie._id);
                 setSavedMovies(filterCard);
@@ -118,20 +119,22 @@ function App() {
             })
     }
 
-    const handleClickSaveButton = (movie) => {
-        if (!movie._id && !movie.isSaved) {
-           return  handleSaveMovies(movie);
+    const handleClickButton = (movie) => {
+        const isSaved = handleCheckSaved(movie, savedMovies);
+        console.log(movie)
+        console.log(savedMovies)
+        console.log(isSaved)
+        if (movie.id === savedMovies.id || isSaved) {
+            return handleDeleteMovies(movie)
         }
-        return handleDeleteMovies(movie)
+        return  handleSaveMovies(movie);
     }
-
 
 
     React.useEffect(() => {
         if (!loggedIn) return;
             mainApi.getSavedMovies()
             .then(data => {
-                console.log(savedMovies)
                 setSavedMovies(data);
 
             })
@@ -141,7 +144,7 @@ function App() {
     React.useEffect(() => {
         movieApi.getAllMovies()
             .then(data => {
-                setMoviesCards(handleCheckSaved(data, savedMovies));
+                setMoviesCards(data);
                 setIsLoading(true)
 
             })
@@ -156,28 +159,34 @@ function App() {
                   <Route exact path='/'>
                       <Main />
                   </Route>
-                  <Route exact path='/movies'>
-                      <Movies
+                      <ProtectedRoute
+                          component={Movies}
+                          path='/movies'
                           loggedIn={loggedIn}
                           isLoading={isLoading}
                           setIsLoading={setIsLoading}
                           moviesCards={moviesCards}
-                          handleClickSaveButton={handleClickSaveButton}
-                          hasMoreButton={setHasMoreButton} />
-                  </Route>
-                  <Route exact path='/saved-movies'>
-                      <SavedMovies
-                          loggedIn={loggedIn}
-                          savedMovies={savedMovies}
-                          hasMoreButton={hasMoreButton}
-                          handleClickSaveButton={handleClickSaveButton} />
-                  </Route>
-                  <Route exact path='/profile'>
-                      <Profile
-                          handleLogout={handleLogout}
-                          userData={userData}
-                          onUpdateUser={handleUpdateUser}/>
-                  </Route>
+                          moviesSaved={savedMovies}
+                          handleClickButton={handleClickButton}
+                          hasMoreButton={setHasMoreButton}
+                      />
+                  <ProtectedRoute
+                      component={SavedMovies}
+                      path='/saved-movies'
+                      loggedIn={loggedIn}
+                      savedMovies={savedMovies}
+                      moviesSaved={savedMovies}
+                      hasMoreButton={hasMoreButton}
+                      handleClickButton={handleClickButton}
+                  />
+                  <ProtectedRoute
+                      component={Profile}
+                      path='/profile'
+                      loggedIn={loggedIn}
+                      handleLogout={handleLogout}
+                      userData={userData}
+                      onUpdateUser={handleUpdateUser}/>
+                  />
                   <Route exact path='/signup'>
                       <Register
                           handleRegister={handleRegister}
@@ -188,8 +197,8 @@ function App() {
                           handleLogin={handleLogin}
                       />
                   </Route>
-                  <Route exact path='/123'>
-                      <NotFound />
+                  <Route exact path='*'>
+                      <NotFound/>
                   </Route>
               </Switch>
           </div>

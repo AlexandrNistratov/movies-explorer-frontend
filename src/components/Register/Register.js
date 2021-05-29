@@ -40,7 +40,7 @@ function Register ({ handleRegister }) {
                            className='register__input'
                            type="text"
                            name='regName'
-                           value={data.name}
+                           value={data.name || ''}
                            onChange={handleChange} />
                     <span className="error" id="user-name-error"></span>
                     <label className='register__label'>E-mail</label>
@@ -49,7 +49,7 @@ function Register ({ handleRegister }) {
                            className='register__input'
                            type="email"
                            name='regEmail'
-                           value={data.email}
+                           value={data.email || ''}
                            onChange={handleChange} />
                     <span className="error" id="user-email-error"></span>
                     <label className='register__label'>Пароль</label>
@@ -58,7 +58,7 @@ function Register ({ handleRegister }) {
                            className='register__input'
                            type="password"
                            name='regPassword'
-                           value={data.password}
+                           value={data.password || ''}
                            onChange={handleChange} />
                     <span className="error" id="user-password-error"></span>
                     <button className='register__button' type='submit'>Зарегистрироваться</button>

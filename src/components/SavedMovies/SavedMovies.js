@@ -6,8 +6,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
-function SavedMovies ({ savedMovies, hasMoreButton, loggedIn, handleClickSaveButton }) {
-
+function SavedMovies ({ savedMovies,moviesSaved, hasMoreButton, loggedIn, handleClickButton }) {
 
     return (
        <>
@@ -17,7 +16,8 @@ function SavedMovies ({ savedMovies, hasMoreButton, loggedIn, handleClickSaveBut
                <MoviesCardList
                    hasMoreButton={false}
                    cards={savedMovies}
-                   handleClickSaveButton={handleClickSaveButton}>
+                   moviesSaved={moviesSaved}
+                   handleClickButton={handleClickButton}>
                </MoviesCardList>
            </section>
            <Footer />

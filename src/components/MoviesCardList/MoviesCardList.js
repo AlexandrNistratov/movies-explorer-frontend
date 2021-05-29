@@ -3,7 +3,7 @@ import React from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import {getMovieNumber, loadMovies, getMovieKey } from '../../utils/utils';
 
-function MoviesCardList ({ handleClickSaveButton, cards, hasMoreButton }) {
+function MoviesCardList ({ handleClickButton, cards, hasMoreButton, moviesSaved }) {
     const [ countMovies, setCountMovies] = React.useState(getMovieNumber());
 
     // Кнопка еще
@@ -15,7 +15,7 @@ function MoviesCardList ({ handleClickSaveButton, cards, hasMoreButton }) {
         <section className='moveCardList' >
             <div className='moveCardList__content'>
                 {
-                    cards.slice(0, countMovies).map((moviesCard) => <MoviesCard key={getMovieKey(moviesCard)} moviesCard={moviesCard}  handleClickSaveButton={handleClickSaveButton} />)
+                    cards.slice(0, countMovies).map((moviesCard) => <MoviesCard key={getMovieKey(moviesCard)} moviesCard={moviesCard}  handleClickButton={handleClickButton} moviesSaved={moviesSaved} />)
                 }
             </div>
             {hasMoreButton ?

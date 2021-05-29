@@ -9,7 +9,7 @@ import Footer from '../Footer/Footer';
 import {  handleFilterMovies } from '../../utils/utils';
 
 
-function Movies({ loggedIn, handleClickSaveButton, hasMoreButton, moviesCards, isLoading, setIsLoading }) {
+function Movies({ loggedIn, handleClickButton, hasMoreButton, moviesCards, isLoading, setIsLoading, moviesSaved }) {
     const [ searchMovies, setSearchMovies ] = React.useState([]);
 
     const handleSearch = (value) => {
@@ -27,8 +27,9 @@ function Movies({ loggedIn, handleClickSaveButton, hasMoreButton, moviesCards, i
                     handleSearch={handleSearch} />
                 {isLoading ? <Preloader /> :
                     <MoviesCardList
-                        handleClickSaveButton={handleClickSaveButton}
+                        handleClickButton={handleClickButton}
                         cards={searchMovies}
+                        moviesSaved={moviesSaved}
                         hasMoreButton={hasMoreButton} />
                 }
             </section>
