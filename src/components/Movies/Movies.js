@@ -11,8 +11,8 @@ import {  handleFilterMovies, handleFilterShortFilms } from '../../utils/utils';
 
 function Movies({ loggedIn, handleClickButton, hasMoreButton, moviesCards, isLoading, setIsLoading, moviesSaved }) {
     const [ searchMovies, setSearchMovies ] = React.useState([]);
-    // const [isShortsFilms, setIsShortsFilms] = React.useState([]);
-    // const [isCheckBox, setIsCheckBox] = React.useState(false);
+    const [isShortsFilms, setIsShortsFilms] = React.useState([]);
+    const [isCheckBox, setIsCheckBox] = React.useState(false);
 
     const handleSearch = (value) => {
         setIsLoading(true);
@@ -20,17 +20,11 @@ function Movies({ loggedIn, handleClickButton, hasMoreButton, moviesCards, isLoa
         // setIsLoading(false);
     };
 
-    // const handleSearchCheckBox = () => {
-    //     if (setIsCheckBox(true)) {
-    //       return setSearchMovies(handleFilterShortFilms(moviesCards))
-    //     }
-    // }
-    // console.log(isShortsFilms)
-    // console.log(isCheckBox)
-    // const handleToggleCheckBox = () => {
-    //     setIsCheckBox(!isCheckBox);
-    //     handleSearchCheckBox();
-    // }
+    React.useEffect(() => {
+        if (isCheckBox) {
+            return setIsShortsFilms(handleFilterShortFilms(moviesCards))
+        }
+    }, [isCheckBox])
 
     return (
         <>
@@ -39,14 +33,15 @@ function Movies({ loggedIn, handleClickButton, hasMoreButton, moviesCards, isLoa
             <section className='movies'>
                 <SearchForm
                     handleSearch={handleSearch}
-                    // onChange={handleToggleCheckBox}
-                    // isOn={isCheckBox}
+                    setIsShortsFilms={setIsShortsFilms}
+                    isCheckBox={isCheckBox}
                     />
                 {/*{isLoading && <Preloader />}*/}
                     <MoviesCardList
                         handleClickButton={handleClickButton}
                         cards={searchMovies}
-                        // cards={isShortsFilms}
+                        setIsShortsFilms={setIsShortsFilms}
+                        isCheckBox={isCheckBox}
                         moviesSaved={moviesSaved}
                         hasMoreButton={hasMoreButton} />
 
