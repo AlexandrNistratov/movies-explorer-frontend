@@ -97,6 +97,11 @@
     cursor: pointer;
 }
 
+.profile__button_disabled {
+    color: #808080;
+    cursor: not-allowed;
+}
+
 .profile__button-exit {
     margin: 0;
     color: #EE3465;

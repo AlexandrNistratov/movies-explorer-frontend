@@ -6,17 +6,31 @@ import Preloader from '../Preloader/Preloader';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
-import {  handleFilterMovies } from '../../utils/utils';
+import {  handleFilterMovies, handleFilterShortFilms } from '../../utils/utils';
 
 
 function Movies({ loggedIn, handleClickButton, hasMoreButton, moviesCards, isLoading, setIsLoading, moviesSaved }) {
     const [ searchMovies, setSearchMovies ] = React.useState([]);
+    // const [isShortsFilms, setIsShortsFilms] = React.useState([]);
+    // const [isCheckBox, setIsCheckBox] = React.useState(false);
 
     const handleSearch = (value) => {
         setIsLoading(true);
         setSearchMovies(handleFilterMovies(moviesCards, value));
-        setIsLoading(false);
+        // setIsLoading(false);
     };
+
+    // const handleSearchCheckBox = () => {
+    //     if (setIsCheckBox(true)) {
+    //       return setSearchMovies(handleFilterShortFilms(moviesCards))
+    //     }
+    // }
+    // console.log(isShortsFilms)
+    // console.log(isCheckBox)
+    // const handleToggleCheckBox = () => {
+    //     setIsCheckBox(!isCheckBox);
+    //     handleSearchCheckBox();
+    // }
 
     return (
         <>
@@ -24,14 +38,18 @@ function Movies({ loggedIn, handleClickButton, hasMoreButton, moviesCards, isLoa
                 loggedIn={loggedIn} />
             <section className='movies'>
                 <SearchForm
-                    handleSearch={handleSearch} />
-                {isLoading ? <Preloader /> :
+                    handleSearch={handleSearch}
+                    // onChange={handleToggleCheckBox}
+                    // isOn={isCheckBox}
+                    />
+                {/*{isLoading && <Preloader />}*/}
                     <MoviesCardList
                         handleClickButton={handleClickButton}
                         cards={searchMovies}
+                        // cards={isShortsFilms}
                         moviesSaved={moviesSaved}
                         hasMoreButton={hasMoreButton} />
-                }
+
             </section>
             <Footer />
         </>

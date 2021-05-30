@@ -4,28 +4,21 @@ import { useHistory } from 'react-router-dom';
 
 import Header from '../Header/Header';
 
-function Profile ({ handleLogout, userData, onUpdateUser }) {
-    const [name, setName] = React.useState(userData.name);
-    const [email, setEmail] = React.useState(userData.email);
+import { useFormWithValidation } from '../../hooks/useFormWithValidation';
 
-    console.log(userData)
-
+function Profile ({ handleLogout, onUpdateUser }) {
+    const {values, setValues, handleChange, errors, isValid} = useFormWithValidation();
 
     const history = useHistory();
     const currentUser = React.useContext(CurrentUserContext);
 
-    function handleChangeName(e) {
-        setName(e.target.value)
-    }
-
-    function handleChangeEmail(e) {
-        setEmail(e.target.value)
-    }
 
     React.useEffect(() => {
-        setName(currentUser.name || name);
-        setEmail(currentUser.email || email);
-    }, [currentUser]);
+        setValues({
+            name: currentUser.name,
+            email: currentUser.email
+        });
+    }, [currentUser, setValues]);
 
 
 
@@ -34,8 +27,8 @@ function Profile ({ handleLogout, userData, onUpdateUser }) {
 
         // Передаём значения управляемых компонентов во внешний обработчик
         onUpdateUser({
-            name: name,
-            email: email,
+            name: values.name || currentUser.name,
+            email: values.email || currentUser.email,
         });
         setTimeout(() => {
             history.push('/movies');
@@ -47,25 +40,29 @@ function Profile ({ handleLogout, userData, onUpdateUser }) {
             <Header />
             <div className='profile'>
                 <section className='profile__container'>
-                    <h1 className='profile__title'>{`Привет, ${name}!`}</h1>
-                    <form className='profile__form' onSubmit={handleSubmit}>
+                    <h1 className='profile__title'>{`Привет, ${currentUser.name}!`}</h1>
+                    <form className='profile__form' onSubmit={handleSubmit} noValidate>
                         <div className='profile__edit'>
                             <label id='profile__input' className='profile__label'>Имя</label>
-                            <input id='profile__input'
+                            <input id='user-name'
+                                   name='name'
                                    className='profile__input'
                                    type="text"
-                                   onChange={handleChangeName}
-                                   value={name || ''} />
+                                   onChange={handleChange}
+                                   value={values.name || ''} />
+                            <span className="error" id="user-name-error">{errors.name}</span>
                         </div>
                         <div className='profile__edit'>
                             <label id='profile__input' className='profile__label'>E-mail</label>
-                            <input id='profile__input'
+                            <input id='user-email'
+                                   name='email'
                                    className='profile__input'
                                    type="email"
-                                   onChange={handleChangeEmail}
-                                   value={email || ''} />
+                                   onChange={handleChange}
+                                   value={values.email || ''} />
+                            <span className="error" id="user-email-error">{errors.email}</span>
                         </div>
-                        <button className='profile__button'>Редактировать</button>
+                        <button className={isValid ? 'profile__button' : 'profile__button profile__button_disabled'}>Редактировать</button>
                         <button className='profile__button profile__button-exit' onClick={handleLogout}>Выйти из аккаунта</button>
                     </form>
                 </section>

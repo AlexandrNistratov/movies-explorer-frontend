@@ -3,27 +3,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 
+import { useFormWithValidation } from '../../hooks/useFormWithValidation';
+
 function Register ({ handleRegister }) {
-    const [ data, setData ] = React.useState({
-        regName: '',
-        regEmail: '',
-        regPassword: ''
-    })
-    // console.log(data)
-
-    function handleChange(e) {
-        const {name, value} = e.target;
-
-        setData({
-            ...data,
-            [name]: value
-        })
-    }
+    const { values, handleChange, errors, isValid } = useFormWithValidation();
 
     function handleSubmit(e) {
         e.preventDefault();
-        const { regName, regEmail, regPassword } = data;
-        handleRegister(regName, regEmail, regPassword);
+        handleRegister(values.name, values.email, values.password);
     }
 
     return(
@@ -32,6 +19,7 @@ function Register ({ handleRegister }) {
             <section className='register'>
                 <form className='register__form'
                     onSubmit={handleSubmit}
+                      noValidate
                 >
                     <h1 className='profile__title register__title'>Добро пожаловать!</h1>
                     <label className='register__label'>Имя</label>
@@ -39,29 +27,29 @@ function Register ({ handleRegister }) {
                            required
                            className='register__input'
                            type="text"
-                           name='regName'
-                           value={data.name || ''}
+                           name='name'
+                           value={values.name || ''}
                            onChange={handleChange} />
-                    <span className="error" id="user-name-error"></span>
+                    <span className="error" id="user-name-error">{errors.name}</span>
                     <label className='register__label'>E-mail</label>
                     <input id="user-email"
                            required
                            className='register__input'
                            type="email"
-                           name='regEmail'
-                           value={data.email || ''}
+                           name='email'
+                           value={values.email || ''}
                            onChange={handleChange} />
-                    <span className="error" id="user-email-error"></span>
+                    <span className="error" id="user-email-error">{errors.email}</span>
                     <label className='register__label'>Пароль</label>
                     <input id="user-password"
                            required
                            className='register__input'
                            type="password"
-                           name='regPassword'
-                           value={data.password || ''}
+                           name='password'
+                           value={values.password || ''}
                            onChange={handleChange} />
-                    <span className="error" id="user-password-error"></span>
-                    <button className='register__button' type='submit'>Зарегистрироваться</button>
+                    <span className="error" id="user-password-error">{errors.password}</span>
+                    <button className={isValid ? 'register__button login__button' : 'register__button login__button register__button_disabled'} type='submit'>Зарегистрироваться</button>
                     <div className='login__subtitle'>
                         <p className='login__text'>Уже зарегистрированы?</p>
                         <Link className='login__link' to="/signin">Войти</Link>

@@ -1,4 +1,5 @@
 import imgNotfound from '../images/not-found-image.jpeg';
+import { DURATION_MOVIE } from "./constants";
 
 export const base_url = `${window.location.protocol}${process.env.REACT_APP_API_URL || '//localhost:3001'}`;
 // export const base_url = 'https://api.movies-attachment.nomoredomains.icu';
@@ -56,6 +57,10 @@ export const handleFilterMovies = (movies, value) => {
         }
     })
 }
+
+export const handleFilterShortFilms = (movies) => {
+    return movies.filter((movie) => movie.duration <= DURATION_MOVIE);
+};
 
 export const handleCheckSaved = (movie, savedMovies) => {
     return savedMovies.some((savedMovie) => savedMovie.movieId === movie.id);

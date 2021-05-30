@@ -29,7 +29,7 @@
     background: #2F2F2F;
     border-radius: 8px;
     height: 46px;
-    margin: 0 0 20px;
+    margin: 0 0 5px;
     border: none;
     font-style: normal;
     font-weight: normal;
@@ -52,6 +52,12 @@
     background: #4285F4;
     border-radius: 3px;
     border: none;
+    cursor: pointer;
+}
+
+.register__button_disabled {
+    background: #808080;
+    cursor: not-allowed;
 }
 
 @media screen and (max-width: 768px) {

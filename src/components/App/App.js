@@ -14,7 +14,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import mainApi from '../../utils/MainApi';
 import movieApi from '../../utils/MoviesApi';
-import { handleCheckSaved } from '../../utils/utils';
+import { handleCheckSaved, handleError } from '../../utils/utils';
 
 function App() {
     const history = useHistory();
@@ -23,22 +23,30 @@ function App() {
         email: '',
         password: ''
     })
-    const [currentUser, setCurrentUser] = React.useState('');
+    const [currentUser, setCurrentUser] = React.useState({});
     const [loggedIn, setLoggedIn] = React.useState(false);
     const [ moviesCards, setMoviesCards ] = React.useState([]);
     const [savedMovies, setSavedMovies] = React.useState([]);
     const [hasMoreButton, setHasMoreButton] = React.useState(false);
     const [isLoading, setIsLoading] = React.useState(false);
 
+
     React.useEffect(() => {
         tokenCheck();
     }, [])// eslint-disable-line react-hooks/exhaustive-deps
 
+    React.useEffect(() => {
+        if (!loggedIn) return;
+        mainApi.getUserInfo()
+            .then(res => {
+                setCurrentUser(res)
+            }).catch((err) => alert(err));
+    }, [loggedIn])
 
     function tokenCheck () {
         const jwt = localStorage.getItem('jwt');
         if (jwt) {
-            mainApi.getContent(jwt)
+            mainApi.getUserInfo(jwt)
                 .then((res) => {
                     const userData = {
                         name: res.name,
@@ -55,13 +63,15 @@ function App() {
     function handleLogin(email, password) {
         mainApi.authorize(email, password)
             .then((data) => {
+                console.log(data)
                 if (data.token) {
-                    console.log(data.token)
                     localStorage.setItem('jwt', data.token);
                     setLoggedIn(true);
                     history.push('/movies');
                 }
-            }).catch(err => console.log(err))
+            }).catch(err => {
+            console.log(err);;
+        })
     }
 
     function handleLogout() {
@@ -90,13 +100,15 @@ function App() {
                         handleLogin(email, password);
                     }, 300);
                 }
-            }).catch(err => console.log(err))
+            }).catch(err => {
+            console.log(err);
+        })
     }
 
     function handleUpdateUser(data) {
         mainApi.addUserInfo(data).then((res) => {
             setCurrentUser(res);
-        }).catch((err) => alert(err));
+        }).catch((err) => console.log(err));
     }
 
     const  handleSaveMovies = (movie) => {
@@ -104,7 +116,7 @@ function App() {
             .then((newCard) => {
                 console.log(newCard)
                 setSavedMovies([newCard, ...savedMovies]);
-            }).catch((err) => alert(err));
+            }).catch((err) => console.log(err));
     }
 
     const handleDeleteMovies = (movie) => {
@@ -113,7 +125,7 @@ function App() {
 
         mainApi.deleteCards(userMovie._id)
             .then(() => {
-                const filterCard = savedMovies.filter((item) => item._id !== movie._id);
+                const filterCard = savedMovies.filter((item) => item._id !== userMovie._id);
                 setSavedMovies(filterCard);
 
             })
@@ -121,9 +133,6 @@ function App() {
 
     const handleClickButton = (movie) => {
         const isSaved = handleCheckSaved(movie, savedMovies);
-        console.log(movie)
-        console.log(savedMovies)
-        console.log(isSaved)
         if (movie.id === savedMovies.id || isSaved) {
             return handleDeleteMovies(movie)
         }
@@ -142,13 +151,13 @@ function App() {
     }, [loggedIn]);
 
     React.useEffect(() => {
+        setIsLoading(true)
         movieApi.getAllMovies()
             .then(data => {
                 setMoviesCards(data);
-                setIsLoading(true)
-
             })
             .catch(err => console.log(err))
+            .finally(() => setIsLoading(false))
     }, []);
 
 
@@ -184,7 +193,6 @@ function App() {
                       path='/profile'
                       loggedIn={loggedIn}
                       handleLogout={handleLogout}
-                      userData={userData}
                       onUpdateUser={handleUpdateUser}/>
                   />
                   <Route exact path='/signup'>

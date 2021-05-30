@@ -9,19 +9,22 @@ import Footer from '../Footer/Footer';
 function SavedMovies ({ savedMovies,moviesSaved, hasMoreButton, loggedIn, handleClickButton }) {
 
     return (
-       <>
-           <Header loggedIn={loggedIn} />
-           <section className='savedMovies'>
-               <SearchForm />
-               <MoviesCardList
-                   hasMoreButton={false}
-                   cards={savedMovies}
-                   moviesSaved={moviesSaved}
-                   handleClickButton={handleClickButton}>
-               </MoviesCardList>
-           </section>
-           <Footer />
-       </>
+        <section className='savedMovies'>
+            <>
+                <Header loggedIn={loggedIn} />
+                <section className='savedMovies'>
+                    <SearchForm />
+                    <MoviesCardList
+                        hasMoreButton={false}
+                        cards={savedMovies}
+                        moviesSaved={moviesSaved}
+                        handleClickButton={handleClickButton}>
+                    </MoviesCardList>
+                </section>
+                <Footer />
+            </>
+        </section>
+
     );
 }
 

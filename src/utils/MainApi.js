@@ -2,7 +2,6 @@ import { base_url } from './utils';
 
 class MainApi {
     constructor(options) {
-        this._url = options.url;
         this._headers = options._headers;
     }
 
@@ -21,7 +20,7 @@ class MainApi {
         };
     }
 
-    getContent (token) {
+    getUserInfo (token) {
         return fetch(`${base_url}/users/me`, {
             method: 'GET',
             credentials: 'include',
