@@ -55,6 +55,7 @@ export const handleFilterMovies = (movies, value) => {
         if (movie.nameEN) {
             return  movie.nameEN.toLowerCase().includes(value.toLowerCase())
         }
+        return false;
     })
 }
 

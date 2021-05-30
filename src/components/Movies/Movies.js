@@ -11,7 +11,7 @@ import {  handleFilterMovies, handleFilterShortFilms } from '../../utils/utils';
 
 function Movies({ loggedIn, handleClickButton, hasMoreButton, moviesCards, isLoading, setIsLoading, moviesSaved }) {
     const [ searchMovies, setSearchMovies ] = React.useState([]);
-    const [isShortsFilms, setIsShortsFilms] = React.useState([]);
+    const [shortsFilms, setShortsFilms] = React.useState([]);
     const [isCheckBox, setIsCheckBox] = React.useState(false);
 
     const handleSearch = (value) => {
@@ -22,7 +22,7 @@ function Movies({ loggedIn, handleClickButton, hasMoreButton, moviesCards, isLoa
 
     React.useEffect(() => {
         if (isCheckBox) {
-            return setIsShortsFilms(handleFilterShortFilms(moviesCards))
+            return setShortsFilms(handleFilterShortFilms(moviesCards))
         }
     }, [isCheckBox])
 
@@ -33,14 +33,14 @@ function Movies({ loggedIn, handleClickButton, hasMoreButton, moviesCards, isLoa
             <section className='movies'>
                 <SearchForm
                     handleSearch={handleSearch}
-                    setIsShortsFilms={setIsShortsFilms}
+                    setIsCheckBox={setIsCheckBox}
                     isCheckBox={isCheckBox}
                     />
                 {/*{isLoading && <Preloader />}*/}
                     <MoviesCardList
                         handleClickButton={handleClickButton}
-                        cards={searchMovies}
-                        setIsShortsFilms={setIsShortsFilms}
+                        cards={isCheckBox ? shortsFilms : searchMovies}
+                        shortsFilms={shortsFilms}
                         isCheckBox={isCheckBox}
                         moviesSaved={moviesSaved}
                         hasMoreButton={hasMoreButton} />

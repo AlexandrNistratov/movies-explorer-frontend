@@ -3,7 +3,7 @@ import React from 'react';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import { MESSAGE_NO_VALUE } from '../../utils/constants';
 // handleToggleCheckBox, isOn
-function SearchForm ({ handleSearch, isCheckBox, setIsShortsFilms  }) {
+function SearchForm ({ handleSearch, isCheckBox, setIsCheckBox  }) {
     const [ value, setValue ] = React.useState('');
     const [error, setError] = React.useState('');
 
@@ -44,7 +44,7 @@ function SearchForm ({ handleSearch, isCheckBox, setIsShortsFilms  }) {
 
                 <FilterCheckbox
                     isCheckBox={isCheckBox}
-                    setIsShortsFilms={setIsShortsFilms}
+                    setIsCheckBox={setIsCheckBox}
                 />
             </div>
         </section>
