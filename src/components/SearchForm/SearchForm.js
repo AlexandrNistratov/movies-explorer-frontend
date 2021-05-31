@@ -12,13 +12,12 @@ function SearchForm ({ handleSearch, isCheckBox, setIsCheckBox  }) {
     }
 
     function handleSubmit (e) {
-        console.log(value)
         e.preventDefault();
         if (!value) {
-            setError(MESSAGE_NO_VALUE)
+            setError(MESSAGE_NO_VALUE);
+            return false;
         }
         setError('');
-        console.log(value)
         handleSearch(value);
     }
 
@@ -37,16 +36,16 @@ function SearchForm ({ handleSearch, isCheckBox, setIsCheckBox  }) {
                             value={value}
                             onChange={handleChange}
                         />
-                        <span className="search__error" id='search__input-error' >{error}</span>
+
                         <button className='search__button'>Найти</button>
                     </div>
                 </form>
-
                 <FilterCheckbox
                     isCheckBox={isCheckBox}
                     setIsCheckBox={setIsCheckBox}
                 />
             </div>
+            <span className="error error__messages" id='search__input-error' >{error}</span>
         </section>
     );
 }

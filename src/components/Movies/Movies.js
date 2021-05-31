@@ -16,6 +16,10 @@ function Movies({ loggedIn, handleClickButton, hasMoreButton, moviesCards, isLoa
 
     const handleSearch = (value) => {
         setIsLoading(true);
+        if (!value) {
+            setSearchMovies([]);
+            return false;
+        }
         setSearchMovies(handleFilterMovies(moviesCards, value));
         // setIsLoading(false);
     };

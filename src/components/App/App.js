@@ -183,6 +183,8 @@ function App() {
                       component={SavedMovies}
                       path='/saved-movies'
                       loggedIn={loggedIn}
+                      isLoading={isLoading}
+                      setIsLoading={setIsLoading}
                       savedMovies={savedMovies}
                       moviesSaved={savedMovies}
                       hasMoreButton={hasMoreButton}

@@ -41,7 +41,7 @@ function Login ({ handleLogin }) {
                            value={values.password || ''}
                            onChange={handleChange}/>
                     <span className="error" id="user-password-error">{errors.password}</span>
-                    <button className={isValid ? 'register__button login__button' : 'register__button_disabled login__button'}>Войти</button>
+                    <button className={isValid ? 'register__button login__button' : 'register__button login__button register__button_disabled '}>Войти</button>
                     <div className='login__subtitle'>
                         <p className='login__text'>Ещё не зарегистрированы?</p>
                         <Link className='login__link' to="/signup">Регистрация</Link>

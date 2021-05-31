@@ -5,6 +5,7 @@ import {getMovieNumber, loadMovies, getMovieKey } from '../../utils/utils';
 
 function MoviesCardList ({ handleClickButton, cards, hasMoreButton, moviesSaved }) {
     const [ countMovies, setCountMovies] = React.useState(getMovieNumber());
+    // console.log(cards)
 
     // Кнопка еще
     const handleClickMoreButton = () => {
