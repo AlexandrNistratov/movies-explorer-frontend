@@ -2,7 +2,7 @@ import imgNotfound from '../images/not-found-image.jpeg';
 import { DURATION_MOVIE } from "./constants";
 
 export const base_url = `${window.location.protocol}${process.env.REACT_APP_API_URL || '//localhost:3001'}`;
-// export const base_url = 'https://api.movies-attachment.nomoredomains.icu';
+
 // Если нет картинки, покажи эту катинку
 export const getCardImage = (moviesCard) => {
     if (moviesCard.image && moviesCard.image.url) {
