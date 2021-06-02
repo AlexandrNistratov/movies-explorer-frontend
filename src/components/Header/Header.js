@@ -8,10 +8,10 @@ function Header({ loggedIn }) {
     const location = useLocation();
     const isRegisterPage = location.pathname === '/signup';
     const isLoginPage = location.pathname === '/signin';
-    const isProfilePage = location.pathname === '/profile';
+    // const isProfilePage = location.pathname === '/profile';
     return (
         <>
-            {isRegisterPage || isLoginPage || isProfilePage ? (<AuthHeader />) : (<Navigation loggedIn={loggedIn} />)}
+            {isRegisterPage || isLoginPage ? (<AuthHeader />) : (<Navigation loggedIn={loggedIn} />)}
         </>
     );
 }

@@ -107,9 +107,13 @@ function App() {
 
     function handleUpdateUser(data) {
         mainApi.addUserInfo(data).then((res) => {
-            setCurrentUser(res);
+            if (res.ok) {
+                setCurrentUser(res);
+            }
+
         }).catch((err) => console.log(err));
     }
+
 
     const  handleSaveMovies = (movie) => {
         mainApi.addNewCards(movie)
@@ -145,16 +149,20 @@ function App() {
             mainApi.getSavedMovies()
             .then(data => {
                 setSavedMovies(data);
-
             })
             .catch(err => console.log(err))
     }, [loggedIn]);
 
     React.useEffect(() => {
         setIsLoading(true)
+        const moviesLocalStorage = JSON.parse(localStorage.getItem('movies'));
+        if (moviesLocalStorage) {
+            return setMoviesCards(moviesLocalStorage);
+        }
         movieApi.getAllMovies()
             .then(data => {
-                setMoviesCards(data);
+                localStorage.setItem('movies', JSON.stringify(data));
+                setMoviesCards(data)
             })
             .catch(err => console.log(err))
             .finally(() => setIsLoading(false))
@@ -173,7 +181,6 @@ function App() {
                           path='/movies'
                           loggedIn={loggedIn}
                           isLoading={isLoading}
-                          setIsLoading={setIsLoading}
                           moviesCards={moviesCards}
                           moviesSaved={savedMovies}
                           handleClickButton={handleClickButton}

@@ -4,14 +4,15 @@ import { useHistory } from 'react-router-dom';
 
 import Header from '../Header/Header';
 
+import {PROFILE_UPDATE} from '../../utils/constants';
+
 import { useFormWithValidation } from '../../hooks/useFormWithValidation';
 
-function Profile ({ handleLogout, onUpdateUser }) {
+function Profile ({ handleLogout, onUpdateUser, loggedIn }) {
     const {values, setValues, handleChange, errors, isValid} = useFormWithValidation();
+    const [message, setMessage] = React.useState('');
 
-    const history = useHistory();
     const currentUser = React.useContext(CurrentUserContext);
-
 
     React.useEffect(() => {
         setValues({
@@ -20,24 +21,25 @@ function Profile ({ handleLogout, onUpdateUser }) {
         });
     }, [currentUser, setValues]);
 
-
-
     function handleSubmit(e) {
         e.preventDefault();
 
-        // Передаём значения управляемых компонентов во внешний обработчик
         onUpdateUser({
             name: values.name || currentUser.name,
             email: values.email || currentUser.email,
         });
-        setTimeout(() => {
-            history.push('/movies');
-        }, 1000);
+        setMessage(PROFILE_UPDATE)
+    }
+
+    function handleValues() {
+        if (values.name === currentUser.name && values.email === currentUser.email) {
+            return false;
+        }
     }
 
     return (
         <>
-            <Header />
+            <Header  loggedIn={loggedIn}/>
             <div className='profile'>
                 <section className='profile__container'>
                     <h1 className='profile__title'>{`Привет, ${currentUser.name}!`}</h1>
@@ -46,6 +48,8 @@ function Profile ({ handleLogout, onUpdateUser }) {
                             <label id='profile__input' className='profile__label'>Имя</label>
                             <input id='user-name'
                                    name='name'
+                                   minLength='2'
+                                   maxLength='30'
                                    className='profile__input'
                                    type="text"
                                    onChange={handleChange}
@@ -62,8 +66,13 @@ function Profile ({ handleLogout, onUpdateUser }) {
                                    value={values.email || ''} />
                             <span className="error" id="user-email-error">{errors.email}</span>
                         </div>
-                        <button className={isValid ? 'profile__button' : 'profile__button profile__button_disabled'}>Редактировать</button>
+                        {handleValues() || isValid ?
+                            <button className='profile__button'>Редактировать</button>
+                            :
+                            <button className='profile__button profile__button_disabled' disabled>Редактировать</button>
+                        }
                         <button className='profile__button profile__button-exit' onClick={handleLogout}>Выйти из аккаунта</button>
+                        <span className="success">{message}</span>
                     </form>
                 </section>
             </div>

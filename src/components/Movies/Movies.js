@@ -9,20 +9,30 @@ import Footer from '../Footer/Footer';
 import {  handleFilterMovies, handleFilterShortFilms } from '../../utils/utils';
 
 
-function Movies({ loggedIn, handleClickButton, hasMoreButton, moviesCards, isLoading, setIsLoading, moviesSaved }) {
+function Movies({ loggedIn, handleClickButton, hasMoreButton, moviesCards, isLoading, moviesSaved }) {
     const [ searchMovies, setSearchMovies ] = React.useState([]);
     const [shortsFilms, setShortsFilms] = React.useState([]);
     const [isCheckBox, setIsCheckBox] = React.useState(false);
 
     const handleSearch = (value) => {
-        setIsLoading(true);
+        // setIsLoading(true);
         if (!value) {
             setSearchMovies([]);
             return false;
         }
-        setSearchMovies(handleFilterMovies(moviesCards, value));
-        // setIsLoading(false);
+        const filterMovies = handleFilterMovies(moviesCards, value)
+        localStorage.setItem('filter-movies', JSON.stringify(filterMovies))
+        setSearchMovies(filterMovies);
+
     };
+
+    React.useEffect(() => {
+        const searchLocalStorage = JSON.parse(localStorage.getItem('filter-movies'));
+        if (searchLocalStorage) {
+            return setSearchMovies(searchLocalStorage)
+        }
+
+    },[])
 
     React.useEffect(() => {
         if (isCheckBox) {
@@ -40,7 +50,7 @@ function Movies({ loggedIn, handleClickButton, hasMoreButton, moviesCards, isLoa
                     setIsCheckBox={setIsCheckBox}
                     isCheckBox={isCheckBox}
                     />
-                {/*{isLoading && <Preloader />}*/}
+                {isLoading ? <Preloader /> : ''}
                     <MoviesCardList
                         handleClickButton={handleClickButton}
                         cards={isCheckBox ? shortsFilms : searchMovies}

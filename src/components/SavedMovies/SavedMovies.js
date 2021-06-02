@@ -11,8 +11,6 @@ function SavedMovies ({ savedMovies,moviesSaved, hasMoreButton, loggedIn, handle
     const [ searchSavedMovies, setSearchSavedMovies ] = React.useState(moviesSaved);
     const [shortsFilmsSaved, setShortsFilmsSaved] = React.useState([]);
     const [isCheckBox, setIsCheckBox] = React.useState(false);
-    console.log(searchSavedMovies)
-    console.log(shortsFilmsSaved)
 
     const handleSearch = (value) => {
         setIsLoading(true);
@@ -30,7 +28,11 @@ function SavedMovies ({ savedMovies,moviesSaved, hasMoreButton, loggedIn, handle
         if (isCheckBox) {
             return setShortsFilmsSaved(handleFilterShortFilms(savedMovies))
         }
-    }, [isCheckBox, searchSavedMovies])
+    }, [isCheckBox, searchSavedMovies]);
+
+    React.useEffect(() => {
+        setSearchSavedMovies(moviesSaved)
+    }, [moviesSaved]);
 
     return (
         <section className='savedMovies'>

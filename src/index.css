@@ -9,6 +9,8 @@
 
 @import url(./components/error/error.css);
 
+@import url(./components/success/success.css);
+
 @import url(./components/Header/Header.css);
 
 @import url(./components/Main/Main.css);
