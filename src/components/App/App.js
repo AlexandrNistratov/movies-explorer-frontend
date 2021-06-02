@@ -107,7 +107,7 @@ function App() {
 
     function handleUpdateUser(data) {
         mainApi.addUserInfo(data).then((res) => {
-            if (res.ok) {
+            if (res._id) {
                 setCurrentUser(res);
             }
 
@@ -181,6 +181,7 @@ function App() {
                           path='/movies'
                           loggedIn={loggedIn}
                           isLoading={isLoading}
+                          setIsLoading={setIsLoading}
                           moviesCards={moviesCards}
                           moviesSaved={savedMovies}
                           handleClickButton={handleClickButton}
